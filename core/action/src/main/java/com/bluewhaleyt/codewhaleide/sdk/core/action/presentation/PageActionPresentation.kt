@@ -29,5 +29,8 @@ data class PageActionPresentation(
             val title: String,
             val pages: List<Page>
         ) : PageContent
+
+        fun asSingle() = this as PageContent.Single
+        fun asMultiple() = this as PageContent.Multiple
     }
 }

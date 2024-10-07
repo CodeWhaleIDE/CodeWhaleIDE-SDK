@@ -7,9 +7,11 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.util.fastFilter
 import com.bluewhaleyt.codewhaleide.sdk.core.action.presentation.ActionPresentation
 
+internal fun Action.asBaseAction() = this as BaseAction<*>
+
 @Composable
 internal fun List<Action>.filterByPresentation(predicate: (ActionPresentation) -> Boolean) =
-    fastFilter {
+    fastFilter { it as BaseAction<*>
         val presentation by it.presentationState.collectAsState()
         predicate(presentation)
     }

@@ -35,6 +35,7 @@ import com.bluewhaleyt.codewhaleide.sdk.core.action.ui.ActionActivityDrawer
 import com.bluewhaleyt.codewhaleide.sdk.core.action.ui.ActionOptionMenuRow
 import com.bluewhaleyt.codewhaleide.sdk.testapp.action.MyAction
 import com.bluewhaleyt.codewhaleide.sdk.testapp.action.MyActionGroup
+import com.bluewhaleyt.codewhaleide.sdk.testapp.action.MyJavaAction
 import com.bluewhaleyt.codewhaleide.sdk.testapp.action.MyPageAction1
 import com.bluewhaleyt.codewhaleide.sdk.testapp.action.MyPageAction2
 import com.bluewhaleyt.codewhaleide.sdk.testapp.action.MyToggleAction
@@ -114,7 +115,8 @@ class MainViewModel : BaseViewModel<MainState, MainEvent, MainEffect>(
                 MyToggleAction(),
                 MyActionGroup(),
                 MyPageAction1(),
-                MyPageAction2()
+                MyPageAction2(),
+                MyJavaAction()
             ))
         }
     )

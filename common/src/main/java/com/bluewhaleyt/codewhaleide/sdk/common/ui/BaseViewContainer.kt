@@ -43,7 +43,7 @@ fun <State : UiState, Event : UiEvent, Effect : UiEffect, ErrorData, SuccessData
     state: State,
     effects: Flow<Effect>,
     onEffect: (Effect) -> Unit = {},
-    idleContent: @Composable (UiRequestState.Idle) -> Unit = {},
+    idleContent: @Composable (UiRequestState.Idle) -> Unit,
     loadingContent: @Composable (UiRequestState.Loading) -> Unit = {
         Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
             CircularProgressIndicator()

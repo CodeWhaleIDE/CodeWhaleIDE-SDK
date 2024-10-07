@@ -20,6 +20,7 @@ import com.bluewhaleyt.codehaleide.sdk.core.common.data.LocalDataContext
 import com.bluewhaleyt.codehaleide.sdk.core.common.presentation.ui.PresentationTooltip
 import com.bluewhaleyt.codewhaleide.sdk.core.action.Action
 import com.bluewhaleyt.codewhaleide.sdk.core.action.ActionEvent
+import com.bluewhaleyt.codewhaleide.sdk.core.action.BaseAction
 import com.bluewhaleyt.codewhaleide.sdk.core.action.presentation.ActionPresentation
 import kotlinx.coroutines.launch
 
@@ -65,8 +66,11 @@ private fun BaseActionBox(
     modifier: Modifier = Modifier,
     action: Action,
     content: ActionContent
-) {
-    val event = ActionEvent(dataContext = LocalDataContext.current)
+) { action as BaseAction<*>
+    val event = ActionEvent(
+        action = action,
+        dataContext = LocalDataContext.current
+    )
     val presentation by action.presentationState.collectAsState()
     Box(
         modifier = modifier,

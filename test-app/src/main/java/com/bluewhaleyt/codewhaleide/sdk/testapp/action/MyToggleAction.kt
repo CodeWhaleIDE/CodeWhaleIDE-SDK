@@ -26,11 +26,14 @@ class MyToggleAction : ToggleAction(
     )
 ) {
     override fun onToggle(toggled: Boolean, event: ActionEvent) {
-        updatePresentation { it.copy(info = it.info.copy(label = toggled.toString())) }
+//        updatePresentation { it.copy(info = it.info.copy(label = toggled.toString())) }
+        event.presentation.label = toggled.toString()
         scope.launch {
-            updatePresentation { it.copy(info = it.info.copy(isLoading = true)) }
+//            updatePresentation { it.copy(info = it.info.copy(isLoading = true)) }
+            event.presentation.isLoading = true
             delay(2.seconds)
-            updatePresentation { it.copy(info = it.info.copy(isLoading = false)) }
+//            updatePresentation { it.copy(info = it.info.copy(isLoading = false)) }
+            event.presentation.isLoading = false
         }
     }
 }

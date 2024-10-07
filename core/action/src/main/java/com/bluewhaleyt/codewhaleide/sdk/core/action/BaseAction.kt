@@ -1,11 +1,11 @@
 package com.bluewhaleyt.codewhaleide.sdk.core.action
 
-import androidx.annotation.CallSuper
-import com.bluewhaleyt.codehaleide.sdk.core.common.data.DataContext
-import com.bluewhaleyt.codehaleide.sdk.core.common.presentation.Presentation
 import com.bluewhaleyt.codehaleide.sdk.core.common.presentation.PresentationInfo
 import com.bluewhaleyt.codehaleide.sdk.core.common.presentation.PresentationStateManager
 import com.bluewhaleyt.codewhaleide.sdk.core.action.presentation.ActionPresentation
+import com.bluewhaleyt.codewhaleide.sdk.core.action.presentation.ClickActionPresentation
+import com.bluewhaleyt.codewhaleide.sdk.core.action.presentation.PageActionPresentation
+import com.bluewhaleyt.codewhaleide.sdk.core.action.presentation.ToggleActionPresentation
 import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.plus
@@ -15,9 +15,9 @@ abstract class BaseAction <T : ActionPresentation>(
     presentation: T
 ) : Action {
     private val stateManager: PresentationStateManager by lazy { PresentationStateManager.instance }
-    final override val presentationState = stateManager.getPresentationState(id, presentation)
+    internal val presentationState = stateManager.getPresentationState(id, presentation)
 
-    protected val presentation
+    internal val presentation
         get() = presentationState.value
 
     final override val scope: CoroutineScope
@@ -25,7 +25,19 @@ abstract class BaseAction <T : ActionPresentation>(
             e.printStackTrace()
         }
 
-    fun updatePresentation(update: (T) -> T) {
+    internal fun updatePresentation(update: (T) -> T) {
         stateManager.updatePresentation(id, update)
+    }
+
+    internal fun updatePresentationInfo(update: (PresentationInfo) -> PresentationInfo) {
+        val currentPresentation = presentation
+        val updatedInfo = update(currentPresentation.info)
+        val newPresentation = when (currentPresentation) {
+            is ClickActionPresentation -> currentPresentation.copy(info = updatedInfo)
+            is ToggleActionPresentation -> currentPresentation.copy(info = updatedInfo)
+            is PageActionPresentation -> currentPresentation.copy(info = updatedInfo)
+            else -> throw IllegalArgumentException("Unsupported ActionPresentation type")
+        }
+        stateManager.updatePresentation<ActionPresentation>(id) { newPresentation }
     }
 }
