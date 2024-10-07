@@ -9,7 +9,7 @@ abstract class ClickAction(
     abstract fun onClick(event: ActionEvent)
 
     final override fun onPerform(event: ActionEvent) {
-        updatePresentation { it.copy(performCount = it.performCount + 1) }
+        updatePresentation { it.copy(performCount = it.performCount + 1)  }
         onClick(event)
     }
 }

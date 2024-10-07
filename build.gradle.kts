@@ -1,6 +1,13 @@
 import com.android.build.gradle.AppExtension
 import com.android.build.gradle.BaseExtension
 import com.android.build.gradle.LibraryExtension
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+
+tasks.withType(KotlinCompile::class).all {
+    compilerOptions {
+        freeCompilerArgs = listOf("-Xjvm-default=all")
+    }
+}
 
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 plugins {

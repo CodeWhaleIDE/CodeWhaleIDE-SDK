@@ -21,29 +21,29 @@ import com.bluewhaleyt.codewhaleide.sdk.common.ui.rememberDrawablePainter
 sealed interface Icon {
     var disableTint: Boolean
 
-    class VectorImage internal constructor(
+    class VectorIcon @JvmOverloads internal constructor(
         val imageVector: ImageVector,
         override var disableTint: Boolean = false
     ) : Icon
-    class PainterImage internal constructor(
+    class PainterIcon @JvmOverloads internal constructor(
         val painter: Painter,
         override var disableTint: Boolean = true
     ) : Icon
-    class BitmapImage internal constructor(
+    class BitmapIcon @JvmOverloads internal constructor(
         val bitmap: ImageBitmap,
         override var disableTint: Boolean = true
     ) : Icon
-    class DrawableImage internal constructor(
+    class DrawableIcon @JvmOverloads internal constructor(
         val drawable: Drawable,
         override var disableTint: Boolean = true
     ) : Icon
 }
 
-fun ImageVector.toIcon() = Icon.VectorImage(this)
-fun Painter.toIcon() = Icon.PainterImage(this)
-fun ImageBitmap.toIcon() = Icon.BitmapImage(this)
-fun Bitmap.toIcon() = Icon.BitmapImage(this.asImageBitmap())
-fun Drawable.toIcon() = Icon.DrawableImage(this)
+fun ImageVector.toIcon() = Icon.VectorIcon(this)
+fun Painter.toIcon() = Icon.PainterIcon(this)
+fun ImageBitmap.toIcon() = Icon.BitmapIcon(this)
+fun Bitmap.toIcon() = Icon.BitmapIcon(this.asImageBitmap())
+fun Drawable.toIcon() = Icon.DrawableIcon(this)
 
 @Composable
 fun Icon(
@@ -69,7 +69,7 @@ private fun IconImpl(
     tint: Color
 ) {
     when (icon) {
-        is Icon.VectorImage -> {
+        is Icon.VectorIcon -> {
             Icon(
                 modifier = modifier,
                 imageVector = icon.imageVector,
@@ -77,7 +77,7 @@ private fun IconImpl(
                 tint = tint
             )
         }
-        is Icon.PainterImage -> {
+        is Icon.PainterIcon -> {
             Icon(
                 modifier = modifier,
                 painter = icon.painter,
@@ -85,7 +85,7 @@ private fun IconImpl(
                 tint = tint
             )
         }
-        is Icon.BitmapImage -> {
+        is Icon.BitmapIcon -> {
             Icon(
                 modifier = modifier,
                 bitmap = icon.bitmap,
@@ -93,7 +93,7 @@ private fun IconImpl(
                 tint = tint
             )
         }
-        is Icon.DrawableImage -> {
+        is Icon.DrawableIcon -> {
             val drawablePainter = rememberDrawablePainter(drawable = icon.drawable)
             Icon(
                 modifier = modifier.sizeIn(maxWidth = 24.dp),

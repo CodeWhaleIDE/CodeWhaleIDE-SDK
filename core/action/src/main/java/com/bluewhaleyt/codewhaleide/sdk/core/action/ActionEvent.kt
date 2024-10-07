@@ -32,15 +32,12 @@ class ActionEvent internal constructor(
         private val presentation
             get() = action.asBaseAction().presentationState.value
 
-        @Nls(capitalization = Nls.Capitalization.Title)
         var label = presentation.info.label
             set(value) = action.asBaseAction().updatePresentationInfo { it.copy(label = value) }
 
-        @Nls(capitalization = Nls.Capitalization.Title)
         var summary = presentation.info.summary
             set(value) = action.asBaseAction().updatePresentationInfo { it.copy(summary = value) }
 
-        @Nls(capitalization = Nls.Capitalization.Sentence)
         var description = presentation.info.description
             set(value) = action.asBaseAction().updatePresentationInfo { it.copy(description = value) }
 

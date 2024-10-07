@@ -9,12 +9,13 @@ import com.bluewhaleyt.codehaleide.sdk.core.common.data.DataKeys;
 import com.bluewhaleyt.codehaleide.sdk.core.common.presentation.PresentationInfo;
 import com.bluewhaleyt.codewhaleide.sdk.core.action.ActionEvent;
 import com.bluewhaleyt.codewhaleide.sdk.core.action.ClickAction;
+import com.bluewhaleyt.codewhaleide.sdk.core.action.presentation.ActionPresentationInfo;
 import com.bluewhaleyt.codewhaleide.sdk.core.action.presentation.ClickActionPresentation;
 
 public class MyJavaAction extends ClickAction {
     public MyJavaAction() {
         super("myJavaAction", new ClickActionPresentation(
-                new PresentationInfo("My Java Action")
+                new ActionPresentationInfo("My Java Action")
         ));
     }
 

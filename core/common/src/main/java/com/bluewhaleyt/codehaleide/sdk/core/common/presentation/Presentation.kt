@@ -5,14 +5,7 @@ interface Presentation {
 
     companion object {
         internal val EMPTY = object : Presentation {
-            override val info = PresentationInfo(
-                label = "",
-                description = null,
-                icon = null,
-                isVisible = true,
-                isEnabled = true,
-                isLoading = false
-            )
+            override val info = object : PresentationInfo {}
         }
     }
 }

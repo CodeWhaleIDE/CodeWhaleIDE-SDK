@@ -27,7 +27,6 @@ import com.bluewhaleyt.codewhaleide.sdk.common.ui.icon.toIcon
 import com.bluewhaleyt.codewhaleide.sdk.common.viewmodel.BaseViewModel
 import com.bluewhaleyt.codewhaleide.sdk.common.viewmodel.UiEffect
 import com.bluewhaleyt.codewhaleide.sdk.common.viewmodel.UiEvent
-import com.bluewhaleyt.codewhaleide.sdk.common.viewmodel.UiRequestState
 import com.bluewhaleyt.codewhaleide.sdk.common.viewmodel.UiState
 import com.bluewhaleyt.codewhaleide.sdk.core.action.Action
 import com.bluewhaleyt.codewhaleide.sdk.core.action.PageAction
@@ -94,7 +93,6 @@ fun MainScreen() {
 }
 
 data class MainState(
-    override val requestState: UiRequestState = UiRequestState.Idle,
     val actions: SnapshotStateList<Action> = mutableStateListOf(),
     val selectedActivityBarAction: PageAction = actions.filterIsInstance<PageAction>().first()
 ) : UiState

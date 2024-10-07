@@ -1,26 +1,15 @@
 package com.bluewhaleyt.codewhaleide.sdk.core.action.ui
 
 import androidx.compose.foundation.layout.ColumnScope
-import androidx.compose.foundation.layout.RowScope
-import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.itemsIndexed
-import androidx.compose.foundation.shape.CornerSize
-import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.BottomAppBar
 import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.NavigationRail
 import androidx.compose.material3.NavigationRailItem
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.scale
-import androidx.compose.ui.unit.dp
-import androidx.compose.ui.util.fastForEach
-import androidx.compose.ui.util.fastForEachIndexed
-import com.bluewhaleyt.codehaleide.sdk.core.common.presentation.ui.PresentationIcon
+import com.bluewhaleyt.codewhaleide.sdk.core.action.presentation.ui.ActionPresentationIcon
 import com.bluewhaleyt.codewhaleide.sdk.core.action.PageAction
 
 @ExperimentalMaterial3Api
@@ -63,7 +52,7 @@ private fun ActionActivityBarItem(
             modifier = modifier.scale(0.8f),
             enabled = presentation.info.isEnabledAndNotLoading,
             selected = selected,
-            icon = { PresentationIcon(presentation = presentation) },
+            icon = { ActionPresentationIcon(presentation = presentation) },
             onClick = {
                 onSelected()
                 onPerform()

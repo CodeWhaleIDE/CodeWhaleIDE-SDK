@@ -1,10 +1,6 @@
 package com.bluewhaleyt.codewhaleide.sdk.core.action.ui
 
-import android.content.res.Configuration
-import androidx.compose.animation.AnimatedVisibility
-import androidx.compose.animation.core.animateDpAsState
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
@@ -17,7 +13,6 @@ import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.foundation.shape.CornerSize
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.automirrored.filled.Logout
 import androidx.compose.material.icons.filled.Close
 import androidx.compose.material3.BottomAppBar
 import androidx.compose.material3.DrawerState
@@ -26,8 +21,8 @@ import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.ModalDrawerSheet
 import androidx.compose.material3.ModalNavigationDrawer
+import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
-import androidx.compose.material3.PermanentNavigationDrawer
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -36,16 +31,12 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.util.fastForEachIndexed
 import com.bluewhaleyt.codewhaleide.sdk.common.ui.Content
@@ -55,7 +46,6 @@ import com.bluewhaleyt.codewhaleide.sdk.common.ui.icon.toIcon
 import com.bluewhaleyt.codewhaleide.sdk.core.action.Action
 import com.bluewhaleyt.codewhaleide.sdk.core.action.PageAction
 import com.bluewhaleyt.codewhaleide.sdk.core.action.presentation.PageActionPresentation
-import kotlinx.serialization.json.JsonNull.content
 
 @ExperimentalMaterial3Api
 @Composable
@@ -229,7 +219,7 @@ private fun ActionActivityDrawerPager(
                             )
                         },
                         bottomBar = {
-                            BottomAppBar(
+                            NavigationBar(
                                 modifier = Modifier.clip(RoundedCornerShape(
                                     topStart = MaterialTheme.shapes.extraLarge.topStart,
                                     topEnd = MaterialTheme.shapes.extraLarge.topEnd,

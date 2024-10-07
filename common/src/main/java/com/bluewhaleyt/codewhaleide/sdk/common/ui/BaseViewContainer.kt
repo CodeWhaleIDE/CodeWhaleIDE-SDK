@@ -67,6 +67,7 @@ fun <State : UiState, Event : UiEvent, Effect : UiEffect, ErrorData, SuccessData
             is UiRequestState.Loading -> loadingContent(requestState)
             is UiRequestState.Error<*> -> (requestState as? UiRequestState.Error<ErrorData>)?.let { errorContent(it) }
             is UiRequestState.Success<*> -> (requestState as? UiRequestState.Success<SuccessData>)?.let { successContent(it) }
+            else -> throw IllegalArgumentException("Unsupported UiRequestState for stateful UI wrapper.")
         }
     }
 }
@@ -81,7 +82,7 @@ fun <State : UiState, Event : UiEvent, Effect : UiEffect, ErrorData, SuccessData
  * @param state the state of [State].
  * @param effects the effects of [Effect] of [Flow].
  * @param onEffect the callback of launching effects.
- * @param content the content to be displayed by passing [UiRequestState].
+ * @param content the content to be displayed and determined by the [UiRequestState] is passed.
  */
 @Composable
 fun <State : UiState, Event : UiEvent, Effect : UiEffect> BaseViewContainer(

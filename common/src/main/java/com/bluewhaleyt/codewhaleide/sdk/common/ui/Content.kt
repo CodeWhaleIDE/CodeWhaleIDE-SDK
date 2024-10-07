@@ -34,7 +34,7 @@ fun Content(
     when (content) {
         is Content.View -> {
             if (content.view(context) is ComposeView) {
-                ComposeView(LocalContext.current).apply {
+                ComposeView(context).apply {
                     Content.View(content.view)
                 }
             } else {

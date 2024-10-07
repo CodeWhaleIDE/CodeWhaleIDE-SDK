@@ -10,6 +10,7 @@ import com.bluewhaleyt.codewhaleide.sdk.core.action.ActionEvent
 import com.bluewhaleyt.codewhaleide.sdk.core.action.ClickAction
 import com.bluewhaleyt.codewhaleide.sdk.core.action.ToggleAction
 import com.bluewhaleyt.codewhaleide.sdk.core.action.presentation.ActionPresentation
+import com.bluewhaleyt.codewhaleide.sdk.core.action.presentation.ActionPresentationInfo
 import com.bluewhaleyt.codewhaleide.sdk.core.action.presentation.ClickActionPresentation
 import com.bluewhaleyt.codewhaleide.sdk.core.action.presentation.ToggleActionPresentation
 import kotlinx.coroutines.delay
@@ -19,20 +20,17 @@ import kotlin.time.Duration.Companion.seconds
 class MyToggleAction : ToggleAction(
     id = "myToggleAction",
     presentation = ToggleActionPresentation(
-        PresentationInfo(
+        ActionPresentationInfo(
             "My Toggle Action", null, null, Icons.Default.ToggleOn.toIcon()
         ),
         showAsAction = ActionPresentation.ShowAsAction.IfRoom
     )
 ) {
     override fun onToggle(toggled: Boolean, event: ActionEvent) {
-//        updatePresentation { it.copy(info = it.info.copy(label = toggled.toString())) }
         event.presentation.label = toggled.toString()
         scope.launch {
-//            updatePresentation { it.copy(info = it.info.copy(isLoading = true)) }
             event.presentation.isLoading = true
             delay(2.seconds)
-//            updatePresentation { it.copy(info = it.info.copy(isLoading = false)) }
             event.presentation.isLoading = false
         }
     }

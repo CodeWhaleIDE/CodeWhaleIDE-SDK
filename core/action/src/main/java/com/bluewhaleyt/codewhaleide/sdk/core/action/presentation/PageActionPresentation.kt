@@ -1,12 +1,11 @@
 package com.bluewhaleyt.codewhaleide.sdk.core.action.presentation
 
-import com.bluewhaleyt.codehaleide.sdk.core.common.presentation.PresentationInfo
 import com.bluewhaleyt.codewhaleide.sdk.common.ui.Content
 import com.bluewhaleyt.codewhaleide.sdk.common.ui.icon.Icon
 import com.bluewhaleyt.codewhaleide.sdk.core.action.Action
 
 data class PageActionPresentation(
-    override val info: PresentationInfo,
+    override val info: ActionPresentationInfo,
     override val performCount: Int = 0,
     val pageContent: PageContent
 ) : ActionPresentation {
@@ -29,8 +28,5 @@ data class PageActionPresentation(
             val title: String,
             val pages: List<Page>
         ) : PageContent
-
-        fun asSingle() = this as PageContent.Single
-        fun asMultiple() = this as PageContent.Multiple
     }
 }

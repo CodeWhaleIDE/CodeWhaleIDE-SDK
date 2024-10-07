@@ -1,8 +1,8 @@
 package com.bluewhaleyt.codewhaleide.sdk.core.action
 
-import com.bluewhaleyt.codehaleide.sdk.core.common.presentation.PresentationInfo
 import com.bluewhaleyt.codehaleide.sdk.core.common.presentation.PresentationStateManager
 import com.bluewhaleyt.codewhaleide.sdk.core.action.presentation.ActionPresentation
+import com.bluewhaleyt.codewhaleide.sdk.core.action.presentation.ActionPresentationInfo
 import com.bluewhaleyt.codewhaleide.sdk.core.action.presentation.ClickActionPresentation
 import com.bluewhaleyt.codewhaleide.sdk.core.action.presentation.PageActionPresentation
 import com.bluewhaleyt.codewhaleide.sdk.core.action.presentation.ToggleActionPresentation
@@ -29,7 +29,7 @@ abstract class BaseAction <T : ActionPresentation>(
         stateManager.updatePresentation(id, update)
     }
 
-    internal fun updatePresentationInfo(update: (PresentationInfo) -> PresentationInfo) {
+    internal fun updatePresentationInfo(update: (ActionPresentationInfo) -> ActionPresentationInfo) {
         val currentPresentation = presentation
         val updatedInfo = update(currentPresentation.info)
         val newPresentation = when (currentPresentation) {

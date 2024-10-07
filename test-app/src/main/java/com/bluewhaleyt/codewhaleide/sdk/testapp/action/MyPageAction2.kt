@@ -16,13 +16,14 @@ import com.bluewhaleyt.codewhaleide.sdk.common.ui.icon.toIcon
 import com.bluewhaleyt.codewhaleide.sdk.common.ui.setComposeContent
 import com.bluewhaleyt.codewhaleide.sdk.core.action.ActionEvent
 import com.bluewhaleyt.codewhaleide.sdk.core.action.PageAction
+import com.bluewhaleyt.codewhaleide.sdk.core.action.presentation.ActionPresentationInfo
 import com.bluewhaleyt.codewhaleide.sdk.core.action.presentation.PageActionPresentation
 import kotlinx.serialization.json.JsonNull.content
 
 class MyPageAction2 : PageAction(
     id = "myPageAction2",
     presentation = PageActionPresentation(
-        info = PresentationInfo("My Page Action 2", icon = Icons.Outlined.Settings.toIcon()),
+        info = ActionPresentationInfo("My Page Action 2", icon = Icons.Outlined.Settings.toIcon()),
         pageContent = PageActionPresentation.PageContent.Multiple(
             title = "My Page Action 2 title",
             pages = listOf(

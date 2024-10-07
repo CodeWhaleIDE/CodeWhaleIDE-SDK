@@ -1,15 +1,15 @@
-package com.bluewhaleyt.codehaleide.sdk.core.common.presentation.ui
+package com.bluewhaleyt.codewhaleide.sdk.core.action.presentation.ui
 
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import com.bluewhaleyt.codehaleide.sdk.core.common.presentation.Presentation
 import com.bluewhaleyt.codewhaleide.sdk.common.ui.icon.Icon
+import com.bluewhaleyt.codewhaleide.sdk.core.action.presentation.ActionPresentation
 
 @Composable
-fun PresentationIcon(
+fun ActionPresentationIcon(
     modifier: Modifier = Modifier,
-    presentation: Presentation
+    presentation: ActionPresentation
 ) {
     AnimatedVisibility(visible = presentation.info.isVisible) {
         Icon(

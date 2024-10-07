@@ -7,12 +7,13 @@ import com.bluewhaleyt.codehaleide.sdk.core.common.presentation.PresentationInfo
 import com.bluewhaleyt.codewhaleide.sdk.common.ui.icon.toIcon
 import com.bluewhaleyt.codewhaleide.sdk.core.action.Action
 import com.bluewhaleyt.codewhaleide.sdk.core.action.ActionGroup
+import com.bluewhaleyt.codewhaleide.sdk.core.action.presentation.ActionPresentationInfo
 import com.bluewhaleyt.codewhaleide.sdk.core.action.presentation.ClickActionPresentation
 
 class MyActionGroup : ActionGroup(
     id = "myActionGroup",
     presentation = ClickActionPresentation(
-        PresentationInfo(
+        ActionPresentationInfo(
             "My Action Group", null, null, Icons.Default.Groups.toIcon()
         )
     )

@@ -5,7 +5,7 @@ import com.bluewhaleyt.codehaleide.sdk.core.common.presentation.PresentationInfo
 import org.jetbrains.annotations.ApiStatus
 
 interface ActionPresentation : Presentation {
-    override val info: PresentationInfo
+    override val info: ActionPresentationInfo
     val showAsAction: ShowAsAction
     val performCount: Int
 

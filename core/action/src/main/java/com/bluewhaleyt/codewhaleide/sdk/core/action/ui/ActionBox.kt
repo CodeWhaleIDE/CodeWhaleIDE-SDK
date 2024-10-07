@@ -17,7 +17,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import com.bluewhaleyt.codehaleide.sdk.core.common.data.LocalDataContext
-import com.bluewhaleyt.codehaleide.sdk.core.common.presentation.ui.PresentationTooltip
+import com.bluewhaleyt.codewhaleide.sdk.core.action.presentation.ui.ActionPresentationTooltip
 import com.bluewhaleyt.codewhaleide.sdk.core.action.Action
 import com.bluewhaleyt.codewhaleide.sdk.core.action.ActionEvent
 import com.bluewhaleyt.codewhaleide.sdk.core.action.BaseAction
@@ -41,7 +41,7 @@ fun ActionBoxWithTooltip(
         TooltipBox(
             state = tooltipState,
             positionProvider = TooltipDefaults.rememberRichTooltipPositionProvider(),
-            tooltip = { PresentationTooltip(presentation = presentation, id = action.id) },
+            tooltip = { ActionPresentationTooltip(presentation = presentation, id = action.id) },
             content = { content(presentation, onPerform) },
             focusable = false
         )

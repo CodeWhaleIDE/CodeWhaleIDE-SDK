@@ -14,6 +14,7 @@ import kotlinx.coroutines.launch
  * @author BlueWhaleYT
  */
 sealed interface UiRequestState {
+    data object Unspecified : UiRequestState
     data object Idle : UiRequestState
     data object Loading : UiRequestState
     data class Error<ErrorData>(val data: ErrorData) : UiRequestState
@@ -22,6 +23,7 @@ sealed interface UiRequestState {
 
 interface UiState {
     val requestState: UiRequestState
+        get() = UiRequestState.Unspecified
 }
 
 interface UiEvent
